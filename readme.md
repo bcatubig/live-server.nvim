@@ -5,7 +5,7 @@ Live reload HTML, CSS, and JavaScript files inside neovim with the power of
 
 ## Installation
 
-1. Install [live-server](https://www.npmjs.com/package/live-server) globally
+1. Install [alive-server](https://www.npmjs.com/package/alive-server) globally
    with your node.js package manager of choice.
 
 2. Install regularly with your neovim package manager
@@ -16,8 +16,8 @@ For example, a config with [yarn](https://yarnpkg.com) and
 ```lua
 require('lazy').setup {
     {
-        'barrett-ruth/live-server.nvim',
-        build = 'yarn global add live-server',
+        'bcatubig/live-server.nvim',
+        build = 'yarn global add alive-server',
         config = true
     }
 }
@@ -33,6 +33,15 @@ require('live-server').setup(opts)
 
 See `:h live-server` for more information
 
+### Defaults
+
+```lua
+{
+  args = {}
+  bin = "alive-server"
+}
+```
+
 ## Usage
 
 `:LiveServerStart`: start the live server
@@ -44,5 +53,5 @@ See `:h live-server` for more information
 1. [mazeloth/live-server](https://github.com/manzeloth/live-server/blob/main/plugin/live-server.vim):
    the first ever live-server port to vim
 2. [aurum77/live-server.nvim](https://github.com/aurum77/live-server.nvim): the
-   first live-server port to neovim (however, it unecessarily depends on `npm`
+   first live-server port to neovim (however, it unnecessarily depends on `npm`
    and didn't quite cut it for me)

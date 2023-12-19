@@ -25,15 +25,16 @@ end
 
 M.config = {
     -- let live-server handle the defaults
+    bin = "alive-server"
     args = {},
 }
 
 M.setup = function(user_config)
     M.config = vim.tbl_deep_extend('force', M.config, user_config or {})
 
-    if not vim.fn.executable 'live-server' then
+    if not vim.fn.executable 'alive-server' then
         log(
-            'live-server is not executable. Ensure the npm module is properly installed',
+            'alive-server is not executable. Ensure the npm module is properly installed',
             vim.log.levels.ERROR
         )
         return
@@ -48,11 +49,11 @@ M.start = function()
     local cached_dir = find_cached_dir(dir)
 
     if cached_dir then
-        log('live-server already running', 'INFO')
+        log('alive-server already running', 'INFO')
         return
     end
 
-    local cmd = { 'live-server', dir }
+    local cmd = { M.config.bin, dir }
     vim.list_extend(cmd, M.config.args)
 
     local job_id = vim.fn.jobstart(cmd, {
@@ -75,7 +76,7 @@ M.start = function()
         end,
     })
 
-    log('live-server started', 'INFO')
+    log('alive-server started', 'INFO')
     job_cache[dir] = job_id
 end
 
