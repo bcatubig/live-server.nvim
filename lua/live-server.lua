@@ -25,7 +25,7 @@ end
 
 M.config = {
     -- let live-server handle the defaults
-    bin = "alive-server"
+    bin = 'alive-server',
     args = {},
 }
 
